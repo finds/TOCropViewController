@@ -1425,6 +1425,8 @@ typedef NS_ENUM(NSInteger, TOCropViewOverlayEdge) {
     else
         cropBoxIsPortrait = aspectRatio.width < aspectRatio.height;
 
+    cropBoxIsPortrait = !cropBoxIsPortrait;
+    
     BOOL zoomOut = NO;
     if (cropBoxIsPortrait) {
         CGFloat newWidth = floorf(cropBoxFrame.size.height * (aspectRatio.width/aspectRatio.height));
