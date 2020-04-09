@@ -1425,6 +1425,17 @@ typedef NS_ENUM(NSInteger, TOCropViewOverlayEdge) {
     else
         cropBoxIsPortrait = aspectRatio.width < aspectRatio.height;
 
+    /*
+     Inverting this logic gives us the alter aspect ratio. which make the code to do zoom out instead of zoom in.
+
+     For example,
+     one portrait image of size w: 50 h: 100
+     so aspect ratio as per older logic would be 50/100 = 0.5 and that will zoom in the image
+
+     and after invert logic it calculate aspect ratio to 100/50 = 2, that will zoom out the image
+
+     there was already a logic implemented to control the image to not zoom beyond its size.
+     */
     cropBoxIsPortrait = !cropBoxIsPortrait;
     
     BOOL zoomOut = NO;
